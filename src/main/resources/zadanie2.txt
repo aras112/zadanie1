@@ -1,4 +1,4 @@
-Zadanie: analiza tekstu pod katem tego czy sa male,duze litery,ma małe i duże litery czy ma znaki specjalne, czy ma spacje
+Zadanie: Analiza tekstu pod katem tego czy sa male,duze litery,ma małe i duże litery czy ma znaki specjalne, czy ma spacje
 
 Czy napis zawiera małe i duże liery?
 
@@ -21,7 +21,7 @@ Odpowiedz: true lub false
 Czy napis zawiera same małe litery? 
 
 Zapytanie typu GET na URL:
-{nazwaHosta}/isUpperCase/{napis}
+{nazwaHosta}/isLowerCase/{napis}
 
 Odpowiedz: true lub false
 
