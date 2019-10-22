@@ -1,0 +1,73 @@
+analiza tekstu pod katem tego czy sa male,duze litery,ma małe i duże litery czy ma znaki specjalne, czy ma spacje
+
+Czy napis zawiera małe i duże liery?
+
+{nazwaHosta}/isMixedCase/{napis}
+
+Odpowiedz: true lub false
+
+
+
+Czy napis zawiera same duże litery?
+
+{nazwaHosta}/isUpperCase/{napis}
+
+Odpowiedz: true lub false
+
+
+
+Czy napis zawiera same małe litery? 
+
+{nazwaHosta}/isUpperCase/{napis}
+
+Odpowiedz: true lub false
+
+
+
+Czy napis zawiera spacje? 
+
+{nazwaHosta}/hasWhitespaceInString/{napis}
+
+Odpowiedz: true lub false
+
+
+
+Czy napis zawiera znaki specjalne litery? 
+
+{nazwaHosta}/hasSpecialCase/{napis}
+
+Odpowiedz: true lub false
+
+
+
+Czy napis jest licza? 
+
+{nazwaHosta}/isNumeric/{napis}
+
+Odpowiedz: true lub false
+
+
+Czy napis zawiera liczbe? 
+
+{nazwaHosta}/hasNumber/{napis}
+
+Odpowiedz: true lub false
+
+
+
+Czy napis zawiera podany ciag? 
+
+
+Zapytanie w postaci JSON:
+{
+  "napis": "demoData",
+  "ciag": "demoData"
+}
+
+JSON wysamy na
+
+{nazwaHosta}/matchPattern
+
+
+Odpowiedz: true lub false
+
