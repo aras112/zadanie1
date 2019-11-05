@@ -12,6 +12,7 @@ import biweekly.property.Uid;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -33,7 +34,7 @@ import java.util.Date;
 public class Controller {
 
 
-    @GetMapping("/holidays")
+    @GetMapping(value = "/holidays", produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
     public ResponseEntity<Resource> getICSFileHolidays() throws Exception {
         Document doc = Jsoup.connect("http://www.weeia.p.lodz.pl/").get();
         Elements swieta = doc.select("a.active");
@@ -52,9 +53,7 @@ public class Controller {
             VEvent event = new VEvent();
             event.setSequence(0);
             event.addAttendee("aras112@o2.pl");
-            event.setSummary("summary");
             event.setCreated(new Date(currentYear, currentMonth, Integer.parseInt(e.text()), 8, 0, 0));
-            event.setDateTimeStamp(new Date());
             event.setDateStart(new Date(currentYear, currentMonth, Integer.parseInt(e.text()), 8, 0, 0));
             event.setDateEnd(new Date(currentYear, currentMonth, Integer.parseInt(e.text()), 20, 0, 0));
             event.setStatus(Status.confirmed());
