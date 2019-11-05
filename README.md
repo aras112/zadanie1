@@ -1,79 +1,75 @@
-Zadanie: Analiza tekstu pod katem tego czy sa male,duze litery,ma małe i duże litery czy ma znaki specjalne, czy ma spacje
+**Dokumentacja**
+----
+  Mobilny Kalendarz WEEIA 
 
-Czy napis zawiera małe i duże liery?
+* **URL**
 
-Zapytanie typu GET na URL:
-{nazwaHosta}/isMixedCase/{napis}
+  /api/holidays
 
-Odpowiedz: true lub false
+* **Metoda**
 
+  `GET`
 
+*  **Parametry URL**
 
-Czy napis zawiera same duże litery?
+  Brak
 
-Zapytanie typu GET na URL:
-{nazwaHosta}/isUpperCase/{napis}
+* **Poprawna odpowiedz**
 
-Odpowiedz: true lub false
+  * **Poprawny kod odpowiedzi** 200 <br />
+   * **Zawartość** `PLIK ICS`
+   * **Przydładowy plik ics** <br >
 
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Michael Angstadt//biweekly 0.6.3//EN
+DESCRIPTION:Ważne wydarzenia
+NAME:WEEIA CALENDAR
+METHOD:REQUEST
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+DTSTAMP:20191105T154810Z
+SEQUENCE:0
+ATTENDEE:mailto:aras112@o2.pl
+CREATED:39191204T070000Z
+DTSTART:39191204T070000Z
+DTEND:39191204T190000Z
+STATUS:CONFIRMED
+UID:5e5acfe2-55ff-43e2-8088-342afcc0fc02
+DESCRIPTION:First Step to Fields Medal
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20191105T154810Z
+SEQUENCE:0
+ATTENDEE:mailto:aras112@o2.pl
+CREATED:39191206T070000Z
+DTSTART:39191206T070000Z
+DTEND:39191206T190000Z
+STATUS:CONFIRMED
+UID:22d806ea-0334-4dfe-94a4-cb6f811be2c8
+DESCRIPTION:First Step to Success
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20191105T154810Z
+SEQUENCE:0
+ATTENDEE:mailto:aras112@o2.pl
+CREATED:39191208T070000Z
+DTSTART:39191208T070000Z
+DTEND:39191208T190000Z
+STATUS:CONFIRMED
+UID:cc80036f-6999-4409-be34-19ffdafb6d4b
+DESCRIPTION:First Step to Nobel Prize
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20191105T154810Z
+SEQUENCE:0
+ATTENDEE:mailto:aras112@o2.pl
+CREATED:39191215T070000Z
+DTSTART:39191215T070000Z
+DTEND:39191215T190000Z
+STATUS:CONFIRMED
+UID:832d1674-19f0-41d6-9113-c89a3ae6faf8
+DESCRIPTION:Fascynująca Fizyka - poziom podstawowy
+END:VEVENT
+END:VCALENDAR
 
-
-Czy napis zawiera same małe litery? 
-
-Zapytanie typu GET na URL:
-{nazwaHosta}/isLowerCase/{napis}
-
-Odpowiedz: true lub false
-
-
-
-Czy napis zawiera spacje? 
-
-Zapytanie typu GET na URL:
-{nazwaHosta}/hasWhitespaceInString/{napis}
-
-Odpowiedz: true lub false
-
-
-
-Czy napis zawiera znaki specjalne litery? 
-
-Zapytanie typu GET na URL:
-{nazwaHosta}/hasSpecialCase/{napis}
-
-Odpowiedz: true lub false
-
-
-
-Czy napis jest licza? 
-
-Zapytanie typu GET na URL:
-{nazwaHosta}/isNumeric/{napis}
-
-Odpowiedz: true lub false
-
-
-Czy napis zawiera liczbe? 
-
-Zapytanie typu GET na URL:
-{nazwaHosta}/hasNumber/{napis}
-
-Odpowiedz: true lub false
-
-
-
-Czy napis zawiera podany ciag? 
-
-
-Zapytanie w postaci JSON:
-{
-  "napis": "demoData",
-  "ciag": "demoData"
-}
-
-wysłamy na URL typu POST:
-
-{nazwaHosta}/matchPattern
-
-
-Odpowiedz: true lub false
