@@ -14,10 +14,7 @@ import org.springframework.core.io.UrlResource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -37,16 +34,32 @@ public class Controller {
 
 
     @GetMapping(value = "/users/{name}")
-    public ResponseEntity<String> getICSFileHolidays(@PathVariable String name) throws IOException {
+    @ResponseStatus(code = HttpStatus.OK)
+    public String getICSFileHolidays(@PathVariable String name) throws IOException {
         RestTemplate restTemplate = new RestTemplate();
         String fooResourceUrl
                 = "https://adm.edu.p.lodz.pl/user/users.php?search=";
+        StringBuffer buffer = new StringBuffer();
 
         Document doc = Jsoup.connect("https://adm.edu.p.lodz.pl/user/users.php?search="+name).get();
+        Elements pracownicy = doc.select("div.user-info");
+
+        for(Element element: pracownicy)
+        {
+            buffer.append(element.toString());
+            Elements e = element.select("a");
+
+            for(Element element2: e)
+            {
+                System.out.println(element2);
+            }
+
+            buffer.append("<a href='"+ element +"'><button>Click Here</button></a>");
+        }
 
         ResponseEntity<String> response
                 = restTemplate.getForEntity(fooResourceUrl + name, String.class);
 
-        return response;
+        return buffer.toString();
     }
 }
