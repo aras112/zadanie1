@@ -9,6 +9,10 @@ import biweekly.property.Method;
 import biweekly.property.Status;
 
 import biweekly.property.Uid;
+import ezvcard.Ezvcard;
+import ezvcard.VCard;
+import ezvcard.VCardVersion;
+import ezvcard.property.StructuredName;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
 import org.springframework.http.HttpStatus;
@@ -48,18 +52,38 @@ public class Controller {
         {
             buffer.append(element.toString());
             Elements e = element.select("a");
+            String s = e.get(0).attributes().get("title");
 
-            for(Element element2: e)
-            {
-                System.out.println(element2);
-            }
+            VCard vcard = new VCard();
+            StructuredName n = new StructuredName();
+            n.setFamily(s.split(" ")[0]);
+            n.setGiven(s.split(" ")[1]);
+            n.getPrefixes().add("Mr");
+            vcard.setStructuredName(n);
+            vcard.setFormattedName(s);
+            String str = Ezvcard.write(vcard).version(VCardVersion.V4_0).go();
 
-            buffer.append("<a href='"+ element +"'><button>Click Here</button></a>");
+            buffer.append("<a href='vcard/"+ s +"'><button>Click Here</button></a>");
         }
 
         ResponseEntity<String> response
                 = restTemplate.getForEntity(fooResourceUrl + name, String.class);
 
         return buffer.toString();
+    }
+
+    @GetMapping(value = "/users/vcard/{name22}")
+    @ResponseStatus(code = HttpStatus.OK)
+    public String getICSFileHoliday2s(@PathVariable String name22) throws IOException {
+            VCard vcard = new VCard();
+            StructuredName n = new StructuredName();
+            n.setFamily(name22.split(" ")[0]);
+            n.setGiven(name22.split(" ")[1]);
+            n.getPrefixes().add("Mr");
+            vcard.setStructuredName(n);
+            vcard.setFormattedName(name22);
+            String str = Ezvcard.write(vcard).version(VCardVersion.V4_0).go();
+
+        return str;
     }
 }
