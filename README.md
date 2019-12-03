@@ -1,6 +1,7 @@
 **Dokumentacja**
 ----
-  Mobilny Kalendarz WEEIA 
+  Mobilny generator vCard WEEIA umożliwia wyszukanie użytkowników i generowanie vCard. 
+ * ***Aplikacje na telefonie można testować pod adresem*** http://testwielokrotnym.herokuapp.com/
 
 * **URL**
 
