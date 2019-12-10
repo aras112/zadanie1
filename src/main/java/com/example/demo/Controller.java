@@ -82,6 +82,13 @@ public class Controller
             buffer.append(element.toString());
             }
 
+        if(pracownicy.isEmpty())
+            {
+            buffer.append("<div class=\"alert alert-warning\">\n" +
+                    "  <strong>Uwaga!</strong> Brak pracowników do wyswietlenia.\n" +
+                    "</div>");
+            }
+
         return buffer.toString();
         }
 
@@ -103,11 +110,11 @@ public class Controller
             "<p>Wpisz pracownika by wygenerować vCard:</p>\n" +
             "\n" +
             "<button class=\"btn btn-default\" onclick=\"myFunction()\">Wyszukaj</button>\n" +
-            "<input class=\"ab btn btn-default\">\n" +
+            "<input id=\"ab\" class=\"ab btn btn-default\">\n" +
             "</center>\n" +
             "<script>\n" +
             "function myFunction() {\n" +
-            "var a = document.getElementsByClassName('ab').value;\n" +
+            "var a = document.getElementById('ab').value;\n" +
             "location.replace('/users/'+a)\n" +
             "\n" +
             "}\n" +
