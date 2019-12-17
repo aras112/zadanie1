@@ -144,6 +144,7 @@ public class Controller {
         Organization organization = new Organization();
         organization.setParameter("Afiliacja do",e2.get(0).html());
         vcard.addOrganization(organization);
+        vcard.addTitle(e2.get(0).html());
         vcard.setFormattedName(name22);
         String str = Ezvcard.write(vcard).version(VCardVersion.V4_0).go();
 
