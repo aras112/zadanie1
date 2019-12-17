@@ -2,5 +2,6 @@ BEGIN:VCARD
 VERSION:4.0
 PRODID:ez-vcard 0.10.5
 N;LANGUAGE=pl:Paweł;Kapusta;;Mr;
+ORG;AFILIACJA DO=I24 - Instytut Informatyki Stosowanej:
 FN:Paweł Kapusta
 END:VCARD
